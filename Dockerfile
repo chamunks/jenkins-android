@@ -39,7 +39,7 @@ RUN echo $PATH && \
     chmod -R 755 $ANDROID_HOME
 
 # Add gradle
-## Source https://services.gradle.org/distributions/ 
+## Source https://services.gradle.org/distributions/
 ADD https://services.gradle.org/distributions/gradle-2.14.1-bin.zip /opt/
 RUN unzip /opt/gradle-2.14.1-bin.zip -d /opt && \
     rm /opt/gradle-2.14.1-bin.zip
@@ -62,5 +62,5 @@ RUN wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key a
     apt-get autoclean -y && \
     apt-get autoremove -y
 EXPOSE 8080
-VOLUME ["/var/lib/jenkins"]
+VOLUME ["/root/.jenkins/"]
 ENTRYPOINT [ "java","-jar","/usr/share/jenkins/jenkins.war" ]
