@@ -22,7 +22,6 @@ RUN apt-get update && \
     apt-get install -y unzip -y && \
     apt-get autoclean -y && \
     apt-get autoremove -y
-    # apt-get install libfuse2 -y && \
 
 ENV JAVA_HOME /usr/bin/java
 ENV PATH $JAVA_HOME:$PATH
@@ -44,18 +43,6 @@ RUN unzip /opt/gradle-0.9-bin.zip -d /opt && \
 ENV GRADLE_HOME /opt/gradle-0.9
 ENV PATH $GRADLE_HOME/bin:$PATH
 
-# Fake a fuse install (to prevent ia32-libs-multiarch package from producing errors)
-# RUN cd /tmp ; apt-get download fuse && \
-#     cd /tmp ; dpkg-deb -x fuse_* . && \
-#     cd /tmp ; dpkg-deb -e fuse_* && \
-#     cd /tmp ; rm fuse_*.deb && \
-#     cd /tmp ; echo -en '#!/bin/bash\nexit 0\n' > DEBIAN/postinst && \
-#     cd /tmp ; dpkg-deb -b . /fuse.deb && \
-#     cd /tmp ; dpkg -i /fuse.deb && \
-#     apt-get install -y ia32-libs-multiarch && \
-#     apt-get autoclean -y && \
-#     apt-get autoremove -y
-
 # Add git
 RUN apt-get install -y git-core && \
     apt-get autoclean -y && \
@@ -68,7 +55,9 @@ RUN wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key a
     apt-get update && \
     mkdir /var/run/jenkins && \
     apt-get install -y jenkins && \
-    service jenkins stop
+    service jenkins stop && \
+    apt-get autoclean -y && \
+    apt-get autoremove -y
 EXPOSE 8080
 VOLUME ["/var/lib/jenkins"]
 ENTRYPOINT [ "java","-jar","/usr/share/jenkins/jenkins.war" ]
