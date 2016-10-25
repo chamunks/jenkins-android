@@ -30,7 +30,8 @@ ENV PATH $JAVA_HOME:$PATH
 # Add Android SDK
 RUN wget --progress=dot:giga http://dl.google.com/android/android-sdk_r22.6.2-linux.tgz && \
     mv android-sdk_r22.6.2-linux.tgz /opt/ && \
-    cd /opt && tar xzvf ./android-sdk_r22.6.2-linux.tgz
+    cd /opt && tar xzvf ./android-sdk_r22.6.2-linux.tgz && \
+    rm -r /opt/android-sdk_r22.6.2-linux.tgz
 ENV ANDROID_HOME /opt/android-sdk-linux/
 ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 RUN echo $PATH && \
