@@ -16,6 +16,10 @@ This container aims to be one that allows someone to get started compiling APK's
 		- [Container Build Health](#container-build-health)
 		- [Repository Statistics/Info](#repository-statisticsinfo)
 	- [Usage](#usage)
+			- [Pull](#pull)
+			- [Basic Run](#basic-run)
+		- [Advanced Usage](#advanced-usage)
+	- [Caveats](#caveats)
 
 <!-- /TOC -->
 ____
@@ -26,9 +30,10 @@ ____
 - ~~Upgrade OS~~
 - ~~Flatten layers~~
 - ~~Get building on 16.04~~
-- Upgrade Packages
-- Get building with latest packages.
+- ~~Upgrade Packages~~
+- ~~Get building with latest packages~~
 - ~~Add persistence (volumes)~~
+- ~~Write some stuff about docker volumes and usage and such.~~
 
 ## Health & Statistics
 ### Repository Health
@@ -48,10 +53,23 @@ ____
 ___
 
 ## Usage
-*Pull*
+#### Pull
 
 ``$ docker pull chamunks/jenkins-android``
 
-*Usage*
+#### Basic Run
 
 ``$ docker run -d -p 8080:8080 chamunks/jenkins-android``
+
+### Advanced Usage
+
+``docker volume create --name jenkins``
+
+``docker run -d -p 8080:8080 -v jenkins:/root/.jenkins --name=jenkins chamunks/jenkins-android-test``
+
+Do note that when you use the advanced usage noted above you will have created a specific volume that will persist through one ``docker rm -f jenkins`` to the next so if you make your own fork of this and maintain it you will be able to upgrade it with your data in tact.
+
+## Caveats
+This container may or may not be maintained by me, you're welcomed to submit PR/MR's and I will review/merge them because theres no real sense in maintaining 20 copies of this.  That said I tend to make things once and then use them for a while and then stop maintaining them personally.
+
+The ``docker volume create`` method leaves a dangling volume if you do not execute the command ``docker volume rm jenkins`` after you're finished.  This volume may grow to be fairly large if you're archiving your artifacts.
