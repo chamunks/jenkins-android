@@ -3,11 +3,16 @@
 ## Description
 This container aims to be one that allows someone to get started compiling APK's out of the box.  More of a description to come.
 
+## Crosslinking
+[https://github.com/chamunks/jenkins-android](https://github.com/chamunks/jenkins-android)
+[https://hub.docker.com/r/chamunks/jenkins-android-test/](https://hub.docker.com/r/chamunks/jenkins-android-test/)
+
 ## ToC
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Jenkins Android](#jenkins-android)
 	- [Description](#description)
+	- [Crosslinking](#crosslinking)
 	- [ToC](#toc)
 	- [Current Status](#current-status)
 	- [ToDo](#todo)
@@ -34,6 +39,8 @@ ____
 - ~~Get building with latest packages~~
 - ~~Add persistence (volumes)~~
 - ~~Write some stuff about docker volumes and usage and such.~~
+- Stop running this as root
+- adopt some of the stuff from [here](https://github.com/jenkinsci/docker/blob/2fb0684fe6eb11a3c1145d71e0cb50bf2dda8d11/Dockerfile#L29)
 
 ## Health & Statistics
 ### Repository Health
@@ -73,3 +80,5 @@ Do note that when you use the advanced usage noted above you will have created a
 This container may or may not be maintained by me, you're welcomed to submit PR/MR's and I will review/merge them because theres no real sense in maintaining 20 copies of this.  That said I tend to make things once and then use them for a while and then stop maintaining them personally.
 
 The ``docker volume create`` method leaves a dangling volume if you do not execute the command ``docker volume rm jenkins`` after you're finished.  This volume may grow to be fairly large if you're archiving your artifacts.
+
+This jenkins is running as the root user which is also not okay but I don't know if I will fix it any time soon as I just need it to build android apps for now.
