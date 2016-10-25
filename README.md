@@ -16,9 +16,9 @@ This container aims to be one that allows someone to get started compiling APK's
 		- [Container Build Health](#container-build-health)
 		- [Repository Statistics/Info](#repository-statisticsinfo)
 	- [Usage](#usage)
-			- [Pull](#pull)
-			- [Basic Run](#basic-run)
-		- [Advanced Usage](#advanced-usage)
+		- [Pull](#pull)
+		- [Basic Run](#basic-run)
+	- [Advanced Usage](#advanced-usage)
 	- [Caveats](#caveats)
 
 <!-- /TOC -->
@@ -53,15 +53,15 @@ ____
 ___
 
 ## Usage
-#### Pull
+### Pull
 
 ``$ docker pull chamunks/jenkins-android``
 
-#### Basic Run
+### Basic Run
 
 ``$ docker run -d -p 8080:8080 chamunks/jenkins-android``
 
-### Advanced Usage
+## Advanced Usage
 
 ``docker volume create --name jenkins``
 
