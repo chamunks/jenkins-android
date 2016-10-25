@@ -27,20 +27,23 @@ ENV JAVA_HOME /usr/bin/java
 ENV PATH $JAVA_HOME:$PATH
 
 # Add Android SDK
-RUN wget --progress=dot:giga http://dl.google.com/android/android-sdk_r22.6.2-linux.tgz && \
-    mv android-sdk_r22.6.2-linux.tgz /opt/ && \
-    cd /opt && tar xzvf ./android-sdk_r22.6.2-linux.tgz && \
-    rm -r /opt/android-sdk_r22.6.2-linux.tgz
+## Source https://developer.android.com/studio/index.html
+RUN wget --progress=dot:giga https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz && \
+    mv android-sdk_r24.4.1-linux.tgz /opt/ && \
+    cd /opt && tar xzvf ./android-sdk_r24.4.1-linux.tgz && \
+    rm -r /opt/android-sdk_r24.4.1-linux.tgz
 ENV ANDROID_HOME /opt/android-sdk-linux/
 ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 RUN echo $PATH && \
     echo "y" | android update sdk -u --filter platform-tools,android-19,build-tools-19.0.3 && \
     chmod -R 755 $ANDROID_HOME
 
-ADD https://services.gradle.org/distributions/gradle-0.9-bin.zip /opt/
-RUN unzip /opt/gradle-0.9-bin.zip -d /opt && \
-    rm /opt/gradle-0.9-bin.zip
-ENV GRADLE_HOME /opt/gradle-0.9
+# Add gradle
+## Source https://services.gradle.org/distributions/ 
+ADD https://services.gradle.org/distributions/gradle-2.14.1-bin.zip /opt/
+RUN unzip /opt/gradle-2.14.1-bin.zip -d /opt && \
+    rm /opt/gradle-2.14.1-bin.zip
+ENV GRADLE_HOME /opt/gradle-2.14.1
 ENV PATH $GRADLE_HOME/bin:$PATH
 
 # Add git
