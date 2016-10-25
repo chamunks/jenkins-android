@@ -23,9 +23,9 @@ ____
 **INCOMPLETE / TESTING**
 
 ## ToDo
-- Upgrade OS
-- Flatten layers
-- Get building on 16.04
+- ~~Upgrade OS~~
+- ~~Flatten layers~~
+- ~~Get building on 16.04~~
 - Upgrade Packages
 - Get building with latest packages.
 - ~~Add persistence (volumes)~~
