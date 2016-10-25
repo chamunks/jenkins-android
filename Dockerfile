@@ -20,9 +20,9 @@ RUN apt-get update && \
     apt-get install oracle-java8-installer -y && \
     apt-get install oracle-java8-set-default -y && \
     apt-get install -y unzip -y && \
-    apt-get install libfuse2 -y && \
     apt-get autoclean -y && \
     apt-get autoremove -y
+    # apt-get install libfuse2 -y && \
 
 ENV JAVA_HOME /usr/bin/java
 ENV PATH $JAVA_HOME:$PATH
@@ -44,16 +44,16 @@ ENV GRADLE_HOME /opt/gradle-0.9
 ENV PATH $GRADLE_HOME/bin:$PATH
 
 # Fake a fuse install (to prevent ia32-libs-multiarch package from producing errors)
-RUN cd /tmp ; apt-get download fuse && \
-    cd /tmp ; dpkg-deb -x fuse_* . && \
-    cd /tmp ; dpkg-deb -e fuse_* && \
-    cd /tmp ; rm fuse_*.deb && \
-    cd /tmp ; echo -en '#!/bin/bash\nexit 0\n' > DEBIAN/postinst && \
-    cd /tmp ; dpkg-deb -b . /fuse.deb && \
-    cd /tmp ; dpkg -i /fuse.deb && \
-    apt-get install -y ia32-libs-multiarch && \
-    apt-get autoclean -y && \
-    apt-get autoremove -y
+# RUN cd /tmp ; apt-get download fuse && \
+#     cd /tmp ; dpkg-deb -x fuse_* . && \
+#     cd /tmp ; dpkg-deb -e fuse_* && \
+#     cd /tmp ; rm fuse_*.deb && \
+#     cd /tmp ; echo -en '#!/bin/bash\nexit 0\n' > DEBIAN/postinst && \
+#     cd /tmp ; dpkg-deb -b . /fuse.deb && \
+#     cd /tmp ; dpkg -i /fuse.deb && \
+#     apt-get install -y ia32-libs-multiarch && \
+#     apt-get autoclean -y && \
+#     apt-get autoremove -y
 
 # Add git
 RUN apt-get install -y git-core && \
