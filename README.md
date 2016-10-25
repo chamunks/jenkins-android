@@ -41,6 +41,7 @@ ____
 - ~~Write some stuff about docker volumes and usage and such.~~
 - Stop running this as root
 - adopt some of the stuff from [here](https://github.com/jenkinsci/docker/blob/2fb0684fe6eb11a3c1145d71e0cb50bf2dda8d11/Dockerfile#L29)
+- fix markdown badges
 
 ## Health & Statistics
 ### Repository Health
