@@ -9,7 +9,7 @@ MAINTAINER Chamunks <Chamunks@gmail.com>
 
 # Never ask for confirmations
 ENV DEBIAN_FRONTEND noninteractive
-RUN echo "debconf shared/accepted-oracle-license-v1-1 select true" | /usr/bin/debconf-set-selections \
+RUN echo "debconf shared/accepted-oracle-license-v1-1 select true" | /usr/bin/debconf-set-selections && \
     echo "debconf shared/accepted-oracle-license-v1-1 seen true" | /usr/bin/debconf-set-selections
 
 # Add oracle-jdk6 packages to and from apt.
