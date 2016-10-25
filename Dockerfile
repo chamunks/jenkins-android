@@ -9,9 +9,6 @@ FROM ubuntu:16.04
 # File Author / Maintainer
 MAINTAINER Chamunks <Chamunks@gmail.com>
 
-# RUN echo "deb http://archive.ubuntu.com/ubuntu precise universe" >> /etc/apt/sources.list
-RUN apt-get update
-
 # Never ask for confirmations
 ENV DEBIAN_FRONTEND noninteractive
 RUN echo "debconf shared/accepted-oracle-license-v1-1 select true" | /usr/bin/debconf-set-selections \
