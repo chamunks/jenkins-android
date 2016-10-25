@@ -1,12 +1,10 @@
-#######################################################################
-# Dockerfile to build Crate.io container image
-# Based on Ubuntu
-#######################################################################
+###################################
+# Dockerfile for jenkins-android ##
+# Based on Ubuntu                ##
+###################################
 
 # Set the base image to Ubuntu
 FROM ubuntu:16.04
-
-# File Author / Maintainer
 MAINTAINER Chamunks <Chamunks@gmail.com>
 
 # Never ask for confirmations
@@ -16,7 +14,7 @@ RUN echo "debconf shared/accepted-oracle-license-v1-1 select true" | /usr/bin/de
 
 # Add oracle-jdk6 packages to and from apt.
 RUN apt-get update && \
-    apt-get install python-software-properties -y && \
+    apt-get install software-properties-common python-software-properties -y && \
     add-apt-repository ppa:webupd8team/java && \
     apt-get update && \
     apt-get install oracle-java8-installer -y && \
