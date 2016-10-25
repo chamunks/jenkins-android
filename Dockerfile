@@ -44,7 +44,6 @@ ENV GRADLE_HOME /opt/gradle-0.9
 ENV PATH $GRADLE_HOME/bin:$PATH
 
 # Fake a fuse install (to prevent ia32-libs-multiarch package from producing errors)
-RUN
 RUN cd /tmp ; apt-get download fuse && \
     cd /tmp ; dpkg-deb -x fuse_* . && \
     cd /tmp ; dpkg-deb -e fuse_* && \
@@ -72,4 +71,3 @@ RUN wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key a
 EXPOSE 8080
 VOLUME ["/var/lib/jenkins"]
 ENTRYPOINT [ "java","-jar","/usr/share/jenkins/jenkins.war" ]
-## END
