@@ -19,7 +19,8 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install oracle-java8-installer -y && \
     apt-get install oracle-java8-set-default -y && \
-    apt-get install -y unzip -y && \
+    apt-get install -y unzip && \
+    apt-get install -y ia32-libs && \
     apt-get autoclean -y && \
     apt-get autoremove -y
 
