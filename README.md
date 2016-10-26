@@ -72,6 +72,8 @@ ___
 ## Advanced Usage
 
 ``docker volume create --name jenkins``
+``docker volume create --name ssh``
+``docker volume create --name androidsdk``
 
 ``docker run -d -p 8080:8080 -v jenkins:/root/.jenkins --name=jenkins chamunks/jenkins-android-test``
 
