@@ -24,7 +24,10 @@ RUN curl -fsSL "https://golang.org/dl/go1.6.3.linux-amd64.tar.gz" -o golang.tar.
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
-RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH" && \
+    apt-get install golang-doc -y && \
+    apt-get autoclean -y && \
+    apt-get autoremove -y
 
 # Never ask for confirmations
 ENV DEBIAN_FRONTEND noninteractive
