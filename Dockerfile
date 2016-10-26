@@ -9,7 +9,9 @@ MAINTAINER Chamunks <Chamunks@gmail.com>
 
 # FROM golang
 # gcc for cgo
-RUN apt-get update && apt-get install -y --no-install-recommends curl g++ gcc libc6-dev make && \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends g++ gcc libc6-dev make && \
+    apt-get install curl -y && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get autoclean -y && \
     apt-get autoremove -y
