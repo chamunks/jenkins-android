@@ -14,12 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl g++ gcc li
     apt-get autoclean -y && \
     apt-get autoremove -y
 
-ENV GOLANG_VERSION 1.6.3
-ENV GOLANG_DOWNLOAD_URL https://golang.org/dl/go$GOLANG_VERSION.linux-amd64.tar.gz
-ENV GOLANG_DOWNLOAD_SHA1 5e916ba4dd8c2fc43beafca4c08b334c4d0686f3
-
-RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz && \
-    echo "$GOLANG_DOWNLOAD_SHA1  golang.tar.gz" | sha1sum -c - && \
+RUN curl -fsSL "https://golang.org/dl/go1.6.3.linux-amd64.tar.gz" -o golang.tar.gz && \
+    echo "5e916ba4dd8c2fc43beafca4c08b334c4d0686f3  golang.tar.gz" | sha1sum -c - && \
     tar -C /usr/local -xzf golang.tar.gz && \
     rm golang.tar.gz
 
