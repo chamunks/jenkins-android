@@ -19,10 +19,6 @@ RUN apt-get update && \
 RUN curl -fsSL "https://golang.org/dl/go1.6.3.linux-amd64.tar.gz" -o golang.tar.gz && \
     echo "5e916ba4dd8c2fc43beafca4c08b334c4d0686f3  golang.tar.gz" | sha1sum -c - && \
     tar -C /usr/local -xzf golang.tar.gz
-RUN rm golang.tar.gz && \
-    apt-get install golang-doc && \
-    apt-get autoclean -y && \
-    apt-get autoremove -y
 
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
