@@ -84,5 +84,5 @@ RUN wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key a
     apt-get autoclean -y && \
     apt-get autoremove -y
 EXPOSE 8080
-VOLUME ["/root/.jenkins/"]
+VOLUME ["/root/.jenkins/", "/opt/android-sdk-linux/licenses"]
 ENTRYPOINT [ "java","-jar","/usr/share/jenkins/jenkins.war" ]
