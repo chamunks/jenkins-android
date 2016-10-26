@@ -9,21 +9,19 @@ MAINTAINER Chamunks <Chamunks@gmail.com>
 
 # FROM golang
 # gcc for cgo
-RUN apt-get update && apt-get install -y --no-install-recommends \
-		g++ \
-		gcc \
-		libc6-dev \
-		make \
-	&& rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends curl g++ gcc libc6-dev make && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get autoclean -y && \
+    apt-get autoremove -y
 
 ENV GOLANG_VERSION 1.6.3
 ENV GOLANG_DOWNLOAD_URL https://golang.org/dl/go$GOLANG_VERSION.linux-amd64.tar.gz
 ENV GOLANG_DOWNLOAD_SHA1 5e916ba4dd8c2fc43beafca4c08b334c4d0686f3
 
-RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
-	&& echo "$GOLANG_DOWNLOAD_SHA1  golang.tar.gz" | sha1sum -c - \
-	&& tar -C /usr/local -xzf golang.tar.gz \
-	&& rm golang.tar.gz
+RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz && \
+    echo "$GOLANG_DOWNLOAD_SHA1  golang.tar.gz" | sha1sum -c - && \
+    tar -C /usr/local -xzf golang.tar.gz && \
+    rm golang.tar.gz
 
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
