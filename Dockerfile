@@ -36,7 +36,7 @@ RUN wget --progress=dot:giga https://dl.google.com/android/android-sdk_r24.4.1-l
 ENV ANDROID_HOME /opt/android-sdk-linux/
 ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 RUN echo $PATH && \
-    echo "y" | android update sdk -u --filter platform-tools,android-19,build-tools-19.0.3 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u --filter platform-tools,android-19,build-tools-19.0.3 && \
     chmod -R 755 $ANDROID_HOME
 
 # Add gradle
