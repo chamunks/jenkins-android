@@ -32,7 +32,10 @@ ENV PATH $JAVA_HOME:$PATH
 RUN wget --progress=dot:giga https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz && \
     mv android-sdk_r24.4.1-linux.tgz /opt/ && \
     cd /opt && tar xzvf ./android-sdk_r24.4.1-linux.tgz && \
-    rm -r /opt/android-sdk_r24.4.1-linux.tgz
+    rm -r /opt/android-sdk_r24.4.1-linux.tgz && \
+    apt-get install gcc-multilib -y && \
+    apt-get autoclean -y && \
+    apt-get autoremove -y
 ENV ANDROID_HOME /opt/android-sdk-linux/
 ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 RUN echo $PATH && \
