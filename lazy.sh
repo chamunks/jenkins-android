@@ -7,7 +7,7 @@ case $1 in
       -v androidsdk:/opt/android-sdk-linux/licenses \
       -v ssh:/etc/ssh \
       --name=jenkins \
-      jenkins-android:golang
+      chamunks/jenkins-android:golang
     ;;
   build )
     docker build -t jenkins-android:golang .
